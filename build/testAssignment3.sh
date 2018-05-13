@@ -17,7 +17,7 @@ number=$(echo $number)
 
 #Check if correct directory exists
 if [ ! -d "$username-$number" ]; then
-  echo "Directory missing. Make sure it has the correct format" "$username-$number" "If the format is correct make sure your data here is correct https://github.com/LinkedDataTest1/Assignment1/blob/master/$username.csv"
+  echo "Directory missing. Make sure it has the correct format" "$username-$number" "If the format is correct make sure your data here is correct https://github.com/LinkedDataTest1/Assignment1/blob/master/$username.csv" >&2
   errors=$((errors+1))
 else
 	#Copy all files to src foulder
@@ -31,12 +31,12 @@ else
 		if [[ $? -ne 0 ]]
 		then
 			#If tests failed show error
-			echo "ERROR ON TEST"
+			echo "ERROR ON TEST" >&2
 			errors=$((errors+1))
 		fi
 	else
 		#If compilation was incorrect return Error
-		echo "ERROR ON COMPILATION"
+		echo "ERROR ON COMPILATION" >&2
 		errors=$((errors+1))
 	fi
 fi
