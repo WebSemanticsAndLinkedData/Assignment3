@@ -1,0 +1,11 @@
+#!/bin/bash
+
+username=$(curl -s -H "Authorization: token ${TOKEN}" -X GET "https://api.github.com/repos/${SEMAPHORE_REPO_SLUG}/pulls/${PULL_REQUEST_NUMBER}" | jq -r '.user.login')
+
+
+git clone https://github.com/WebServicesAndLinkedData/Assignment1.git
+cd Assignment1
+echo "Assignment 3, Submitted" >> $username.csv
+git add $username.csv
+git commit -m "$username report updated"
+git push https://LinkedDataCommenter:$TOKEN@github.com/WebServicesAndLinkedData/Assignment1.git &> /dev/null
