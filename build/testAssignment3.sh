@@ -11,13 +11,13 @@ sleep 2
 username=$(curl -s -H "Authorization: token $TOKEN" -X GET "https://api.github.com/repos/${SEMAPHORE_REPO_SLUG}/pulls/${PULL_REQUEST_NUMBER}" | jq -r '.user.login')
 #username="LuisFernando100"
 sleep 2
-number=$(curl -s -H "Authorization: token $TOKEN" -X GET "https://raw.githubusercontent.com/LinkedDataSemaphoriceCI1/Assignment1/master/$username.csv" | awk -v username=$username -F "\"*,\"*" '{ if($1 == username) print $2}')
+number=$(curl -s -H "Authorization: token $TOKEN" -X GET "https://raw.githubusercontent.com/WebServicesAndLinkedData/Assignment1/master/$username.csv" | awk -v username=$username -F "\"*,\"*" '{ if($1 == username) print $2}')
 number=$(echo $number)
 #number=123
 
 #Check if correct directory exists
 if [ ! -d "$username-$number" ]; then
-  echo "Directory missing. Make sure it has the correct format" "$username-$number" "If the format is correct make sure your data here is correct https://github.com/LinkedDataTest1/Assignment1/blob/master/$username.csv" >&2
+  echo "Directory missing. Make sure it has the correct format" "$username-$number" "If the format is correct make sure your data here is correct https://github.com/WebServicesAndLinkedData/Assignment1/blob/master/$username.csv" >&2
   errors=$((errors+1))
 else
 	#Copy all files to src foulder
