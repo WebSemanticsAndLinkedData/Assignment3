@@ -7,7 +7,9 @@ git config --global user.name "LinkedDataCommenter"
 
 git clone https://github.com/WebServicesAndLinkedData/Assignment1.git
 cd Assignment1
-echo "Assignment 3, Submitted" >> $username.csv
+DATE=`date +%Y-%m-%d`
+sed -i '/Assignment 3,*/d' $username.csv
+echo "Assignment 3, Submitted, " $DATE >> $username.csv
 git add $username.csv
 git commit -m "$username report updated"
 git push https://LinkedDataCommenter:$TOKEN@github.com/WebServicesAndLinkedData/Assignment1.git &> /dev/null
