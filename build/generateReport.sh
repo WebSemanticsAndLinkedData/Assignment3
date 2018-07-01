@@ -17,5 +17,5 @@ else
 fi
 
 git add $username.csv
-git commit -m "$username report updated"
+git commit -m "$username report updated [ci skip]"
 git push https://LinkedDataCommenter:$TOKEN@github.com/WebServicesAndLinkedData/Assignment1.git &> /dev/null
