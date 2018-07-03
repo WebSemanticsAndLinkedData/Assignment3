@@ -27,11 +27,13 @@ else
 	if [[ $? -eq 0 ]]
 	then
 		#If compilation was correct run tests
-		mvn -q test > /dev/null
+		mvn -q test > tmp 2> /dev/null
+
 		if [[ $? -ne 0 ]]
 		then
 			#If tests failed show error
 			echo "ERROR ON TEST" >&2
+			cat tmp 2>/dev/null  | sed -n '/Results :/,$p' >&2
 			errors=$((errors+1))
 		fi
 	else
@@ -39,6 +41,9 @@ else
 		echo "ERROR ON COMPILATION" >&2
 		errors=$((errors+1))
 	fi
+
+	cat tmp 2> /dev/null
+
 fi
 
 exit $errors
