@@ -33,7 +33,7 @@ else
 		then
 			#If tests failed show error
 			echo "ERROR ON TEST" >&2
-			cat tmp 2>/dev/null  | sed -n '/Results :/,$p' >&2
+			cat tmp 2>/dev/null  | sed -n '/Results :/,/Skipped: */p' >&2
 			errors=$((errors+1))
 		fi
 	else
