@@ -1,8 +1,7 @@
 #!/bin/bash
 
-#Name: compileTask.sh
-#Description: Validates that the task files exist and compile them if they do
-#Parameters: Name of the Tasks to search for
+#Name: testAssignment3.sh
+#Description: Validates that the java files exist, compile, and pass the tests correctly
 #Output: Descriptions of errors found
 #Exit Value: Number of errors found, 0 if the files were correct
 
@@ -17,7 +16,7 @@ number=$(echo $number)
 
 #Check if correct directory exists
 if [ ! -d "$username-$number" ]; then
-  echo "Directory missing. Make sure it has the correct format" "$username-$number" "If the format is correct make sure your data here is correct https://github.com/WebServicesAndLinkedData/Assignment1/blob/master/$username.csv" >&2
+  echo "Directory missing ($username-$number). Make sure it has the correct format" "$username-$number" "If the format is correct make sure your data here is correct https://github.com/WebServicesAndLinkedData/Assignment1/blob/master/$username.csv" >&2
   errors=$((errors+1))
 else
 	#Copy all files to src foulder
