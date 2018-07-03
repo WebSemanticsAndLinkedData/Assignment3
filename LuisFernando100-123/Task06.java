@@ -12,7 +12,7 @@ import org.apache.jena.rdf.model.Property;
 import org.apache.jena.util.FileManager;
 import org.apache.jena.vocabulary.VCARD;
 
-public class Task06 {
+public class Task06 
 
 public static String ns = "http://somewhere#";
 	public static String foafNS = "http://xmlns.com/foaf/0.1/";
